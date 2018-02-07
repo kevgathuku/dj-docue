@@ -13,5 +13,13 @@ class DocumentSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         """Meta class to map serializer's fields with the model fields."""
         model = Document
-        fields = '__all__'
-        read_only_fields = ('slug', 'date_created', 'date_modified')
+        fields = (
+            'title',
+            'content',
+            'can_access',
+            'owner',
+            'created',
+            'modified',
+            'url'
+        )
+        read_only_fields = ('slug', 'created', 'modified')
