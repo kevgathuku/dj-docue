@@ -39,6 +39,7 @@ prospector = {extras = ["with-vulture"]}
 isort = "*"
 safety = "*"
 ipython = "*"
+djangorestframework = "*"
 
 
 [requires]
