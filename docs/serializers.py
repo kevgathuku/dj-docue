@@ -4,7 +4,7 @@ from .models import Document
 
 class DocumentSerializer(serializers.HyperlinkedModelSerializer):
     """Serializer to map the Model instance into JSON format."""
-    owner = serializers.ReadOnlyField(source='owner.email')
+    owner = serializers.ReadOnlyField(source='owner.username')
     url = serializers.HyperlinkedIdentityField(
         view_name='document-detail',
         lookup_field='slug'
