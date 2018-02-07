@@ -10,4 +10,4 @@ class DocumentSerializer(serializers.ModelSerializer):
         """Meta class to map serializer's fields with the model fields."""
         model = Document
         fields = '__all__'
-        read_only_fields = ('date_created', 'date_modified')
+        read_only_fields = ('slug', 'date_created', 'date_modified')

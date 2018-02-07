@@ -6,7 +6,7 @@ from .models import Document
 
 
 class DocumentList(generics.ListCreateAPIView):
-    """This class defines the create behavior of our rest api."""
+    """Manages creating and listing Documents from our REST API."""
     queryset = Document.objects.all()
     serializer_class = DocumentSerializer
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
