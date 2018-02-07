@@ -58,7 +58,7 @@
     "lodash": "^4.17.4",
     "marked": "^0.3.6",
     "node-sass": "^4.5.3",
-    "popper.js": "^1.12.9",
+    "popper.js": "^1.13.0",
     "postcss": "^6.0.3",
     "postcss-loader": "^2.0.6",
     "prop-types": "^15.5.10",
