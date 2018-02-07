@@ -8,6 +8,8 @@ from .managers import UserManager
 
 
 class User(AbstractBaseUser, PermissionsMixin, IndexedTimeStampedModel):
+    username = models.CharField(
+        max_length=255, blank=False, null=True, unique=True)
     email = models.EmailField(max_length=255, unique=True)
     is_staff = models.BooleanField(
         default=False,
@@ -22,11 +24,13 @@ class User(AbstractBaseUser, PermissionsMixin, IndexedTimeStampedModel):
 
     USERNAME_FIELD = 'email'
 
+    REQUIRED_FIELDS = ['username']
+
     def get_full_name(self):
-        return self.email
+        return f'{self.username} <> {self.email}'
 
     def get_short_name(self):
-        return self.email
+        return self.username
 
     def __str__(self):
-        return self.email
+        return f'{self.username} <> {self.email}'
