@@ -13,6 +13,7 @@ django-naomi = "*"
 fixmydjango = "*"
 model-mommy = "*"
 pre-commit = "*"
+ipdb = "*"
 
 
 [packages]
