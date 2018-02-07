@@ -1,6 +1,7 @@
 import re
 import uuid
 import base64
+from django.conf import settings
 from django.db import models  # noqa
 
 from common.models import IndexedTimeStampedModel
@@ -33,7 +34,8 @@ class Document(IndexedTimeStampedModel):
     """Represents the Document model."""
     title = models.CharField(max_length=255, blank=False)
     content = models.TextField(blank=False)
-    owner = models.ForeignKey(User, on_delete=models.SET(get_sentinel_user))
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL,
+                              on_delete=models.SET(get_sentinel_user))
     can_access = models.CharField(
         max_length=20, blank=False, choices=DOC_ACCESS_CHOICES, default=ALL)
     slug = models.SlugField(max_length=255, blank=False, default=uuid_url64)
