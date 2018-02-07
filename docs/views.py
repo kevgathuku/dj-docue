@@ -14,3 +14,11 @@ class DocumentList(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         """Save the post data when creating a new Document."""
         serializer.save(owner=self.request.user)
+
+
+class DocumentDetail(generics.RetrieveUpdateDestroyAPIView):
+    """This class handles the http GET, PUT and DELETE requests."""
+
+    queryset = Document.objects.all()
+    serializer_class = DocumentSerializer
+    lookup_field = 'slug'

@@ -11,7 +11,7 @@ urlpatterns = [
     url(r'^jsreverse/$', django_js_reverse.views.urls_js, name='js_reverse'),
     url(r'^api-auth/', include('rest_framework.urls')),
 
-    url(r'^api', include('docs.urls')),
+    url(r'^api/', include('docs.urls')),
     url(r'^$', TemplateView.as_view(template_name='exampleapp/itworks.html'), name='home'),
 ]
 
