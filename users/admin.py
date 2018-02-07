@@ -6,14 +6,14 @@ from .models import User
 
 
 class CustomUserAdmin(UserAdmin):
-    list_display = ('id', 'email', 'created', 'modified')
+    list_display = ('id', 'email', 'username', 'created', 'modified')
     list_filter = ('is_active', 'is_staff', 'groups')
-    search_fields = ('email',)
+    search_fields = ('email', 'username',)
     ordering = ('email',)
     filter_horizontal = ('groups', 'user_permissions',)
 
     fieldsets = (
-        (None, {'fields': ('email', 'password')}),
+        (None, {'fields': ('email', 'username', 'password')}),
         (_('Permissions'), {'fields': ('is_active', 'is_staff', 'is_superuser',
                                        'groups', 'user_permissions')}),
     )
