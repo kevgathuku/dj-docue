@@ -9,7 +9,7 @@ from .managers import UserManager
 
 class User(AbstractBaseUser, PermissionsMixin, IndexedTimeStampedModel):
     username = models.CharField(
-        max_length=255, blank=False, null=True, unique=True)
+        max_length=255, blank=False, default='', null=False, unique=True)
     email = models.EmailField(max_length=255, unique=True)
     is_staff = models.BooleanField(
         default=False,
