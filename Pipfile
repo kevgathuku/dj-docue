@@ -16,6 +16,7 @@ pre-commit = "*"
 ipdb = "*"
 factory-boy = "*"
 pytest = "*"
+pytest-django = "*"
 
 
 [packages]
