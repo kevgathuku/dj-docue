@@ -50,17 +50,3 @@ class TestCaseUtils(TestCase):
     def assertResponse404(self, response):
         """ Given response has status_code 404 NOT FOUND"""
         self.assertEqual(response.status_code, 404)
-
-
-class TestGetRequiresAuthenticatedUser:
-
-    def test_get_requires_authenticated_user(self):
-        response = self.client.get(self.view_url)
-        self.assertResponse403(response)
-
-
-class TestAuthGetRequestSuccess:
-
-    def test_auth_get_success(self):
-        response = self.auth_client.get(self.view_url)
-        self.assertResponse200(response)
