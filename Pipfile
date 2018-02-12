@@ -15,6 +15,7 @@ model-mommy = "*"
 pre-commit = "*"
 ipdb = "*"
 factory-boy = "*"
+pytest = "*"
 
 
 [packages]
