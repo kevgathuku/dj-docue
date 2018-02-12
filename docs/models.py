@@ -1,6 +1,4 @@
-import re
-import uuid
-import base64
+import shortuuid
 from django.conf import settings
 from django.db import models  # noqa
 
@@ -17,14 +15,7 @@ DOC_ACCESS_CHOICES = (
     (ONLY_ME, 'Only Me'),
     (STAFF, 'Staff'),
     (ADMIN, 'Admin'),
-    )
-
-
-def uuid_url64():
-    """Returns a unique, 16 byte, URL safe ID by combining UUID and Base64
-    """
-    rv = base64.b64encode(uuid.uuid4().bytes).decode('utf-8')
-    return re.sub(r'[\=\+\/]', lambda m: {'+': '-', '/': '_', '=': ''}[m.group(0)], rv)
+)
 
 def get_sentinel_user():
     """Return a generic user to assign deleted user accounts' docs to"""
@@ -38,7 +29,7 @@ class Document(IndexedTimeStampedModel):
                               on_delete=models.SET(get_sentinel_user))
     can_access = models.CharField(
         max_length=20, blank=False, choices=DOC_ACCESS_CHOICES, default=ALL)
-    slug = models.SlugField(max_length=255, blank=False, default=uuid_url64)
+    slug = models.SlugField(max_length=255, blank=False, default=shortuuid.uuid)
 
     def __str__(self):
         """Return a human readable representation of the Document instance."""
