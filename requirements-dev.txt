@@ -1,0 +1,10 @@
+django-debug-toolbar
+django-debug-toolbar-request-history
+django-naomi
+fixmydjango
+model-mommy
+pre-commit
+ipdb
+factory-boy
+pytest
+pytest-django
