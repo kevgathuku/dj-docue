@@ -1,20 +1,18 @@
+import pytest
 from django.test import TestCase
 
 from .models import Document
 from .factories import DocumentFactory
 
 
-class ModelTestCase(TestCase):
-    """This class defines the test suite for the Document model."""
+@pytest.mark.django_db
+def test_creating_doc_increases_docs_count():
+    old_count = Document.objects.count()
 
-    # def setUp(self):
-        # self.document = DocumentFactory.build()
+    # Create a new doc and save it to the DB
+    new_doc = DocumentFactory.create()
 
-    def test_model_can_create_a_bucketlist(self):
-        old_count = Document.objects.count()
-        # Create a doc now
-        new_doc = DocumentFactory.create()
+    # Validate count is increased by 1
+    new_count = Document.objects.count()
 
-        # Validate count is increased by 1
-        new_count = Document.objects.count()
-        self.assertEqual(old_count + 1, new_count)
+    assert old_count + 1 == new_count
